@@ -1,31 +1,17 @@
-# chrisify
+# Faceify
 
-## Linux Install
+### We put faces on things...
 
-1. Install the OpenCV Developer package. On Ubuntu systems that's `sudo apt install libopencv-dev`
+![Karlify](https://karlify.weworkers.io/0qbr07-Karl4.png)
 
-2. `go get github.com/zikes/chrisify`
+### NOTE: THIS IS VERY EARLY ALPHA, for fun, based on https://github.com/zikes/chrisify (thanks!)
 
-3. `go get github.com/lazywei/go-opencv`
+## Development
 
-4. `cd $GOPATH/github.com/zikes/chrisify && go build && go install`
+The quickest and easiest way to begin developing is to follow these steps:
 
-## Usage
+1. Install Golang on your Computer (`brew install golang`)
+   - Set your GOPATH if you have not previously done so: `mkdir $HOME/.go && export GOPATH=$HOME/.go`)
+2. Install the OpenCV Developer package (`brew install homebrew/science/opencv`)
+3. Download the OpenCV pacakge for Go (`go get github.com/lazywei/go-opencv`)
 
-
-Simplest: `./chrisify path/to/image.jpg > output.jpg`
-
-If executed from any location besides the repository, you must tell it where to find the
-bundled Haar Cascade face recognition XML file. I tried to bundle it with the binary, but
-it must be provided as a file to the OpenCV library, so a file path is necessary.
-
-`chrisify --haar /path/to/haarcascade_frontalface_alt.xml /path/to/input.jpg > output.jpg`
-
-If you'd like to include additional face options, you can provide a directory of PNG files
-to be imported:
-
-`chrisify --faces /path/to/faces /path/to/input.jpg > output.jpg`
-
-## Personalizing
-
-Chris is a great guy, but I can understand if you'd rather use some different faces. The most effective way to do this is to remove the `FaceList.loadInternal()` function (and reference) and delete `bindata.go`. Then make sure you run the executable with the `--faces` argument to load only the faces you want to use. Unless I'm forgetting anything, that's all there is to it!
